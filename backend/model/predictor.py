@@ -15,7 +15,7 @@ with open(CLASSES_PATH, "r") as f:
 
 # === Preparar modelo EfficientNet ===
 model = models.efficientnet_b0(weights=None)
-#model.classifier[1] = nn.Linear(model.classifier[1].in_features, len(class_names))
+model.classifier[1] = nn.Linear(model.classifier[1].in_features, len(class_names))
 model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
 
