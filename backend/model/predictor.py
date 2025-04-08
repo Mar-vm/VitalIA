@@ -8,6 +8,7 @@ import os
 
 # === Cargar clases desde archivo JSON ===
 CLASSES_PATH = 'backend/model/clases.json'
+MODEL_PATH = 'backend/model/modelo_efficientnet_skin_cancer.pth'
 
 with open(CLASSES_PATH, "r") as f:
     class_names = json.load(f)
@@ -15,9 +16,9 @@ with open(CLASSES_PATH, "r") as f:
 # === Preparar modelo EfficientNet ===
 model = models.efficientnet_b0(weights=None)
 #model.classifier[1] = nn.Linear(model.classifier[1].in_features, len(class_names))
-MODEL_PATH = 'backend/model/modelo_efficientnet_skin_cancer.pth'
 model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
+
 
 # === Transformaciones para la imagen ===
 transform = transforms.Compose([
