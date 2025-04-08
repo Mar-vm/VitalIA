@@ -6,12 +6,17 @@ on:
       - mariana
 
 jobs:
-  build-and-run:
+    build-and-run:
     runs-on: ubuntu-latest
 
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v3
+
+      - name: Crear imagen de prueba en backend/static/uploads
+        run: |
+          mkdir -p backend/static/uploads
+          python -c "from PIL import Image; img = Image.new('RGB', (224, 224), color=(255, 200, 200)); img.save('backend/static/uploads/ejemplo.jpg')"
 
       - name: Construir imagen Docker
         run: docker build -t vitalia-backend .
