@@ -2,12 +2,12 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 
 # ---------- Proyecto Origen ----------
-cred_origen = credentials.Certificate("vitalia.json")
+cred_origen = credentials.Certificate("credenciales/vitalia.json")
 app_origen = firebase_admin.initialize_app(cred_origen, name='origen')
 db_origen = firestore.client(app_origen)
 
 # ---------- Proyecto Clon ----------
-cred_clon = credentials.Certificate("vitalia-test.json")
+cred_clon = credentials.Certificate("credenciales/vitalia-test.json")
 app_clon = firebase_admin.initialize_app(cred_clon, name='clon')
 db_clon = firestore.client(app_clon)
 
