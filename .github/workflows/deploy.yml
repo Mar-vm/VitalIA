@@ -1,0 +1,27 @@
+name: Ejecutar Backend VitalIA
+
+on:
+  push:
+    branches:
+      - mariana
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Construir imagen Docker
+        run: docker build -t vitalia-backend .
+
+      - name: Ejecutar contenedor en segundo plano
+        run: docker run -d -p 5000:5000 vitalia-backend
+
+      - name: Esperar a que arranque
+        run: sleep 5
+
+      - name: Probar API con curl
+        run: |
+          curl -X POST -F "image=@backend/static/uploads/ejemplo.jpg" http://localhost:5000/predict || echo "No se pudo conectar"
