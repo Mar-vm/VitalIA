@@ -20,6 +20,14 @@ def predict():
 
     prediction = run_model(filepath)
     recommendation = get_recommendation(prediction)
+    
+    guardar_diagnostico_en_firebase({
+        "usuario": "mariana",
+        "archivo": filename,
+        "diagnostico": prediction,
+        "recomendacion": recommendation["recomendacion"],
+        "es_maligno": recommendation["es_maligno"]
+    })
 
     return jsonify({
         "prediccion": prediction,
