@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import os
 from werkzeug.utils import secure_filename
 from model.predictor import run_model, get_recommendation
+from diagnosticos import guardar_diagnostico_en_firebase
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'backend/static/uploads'
