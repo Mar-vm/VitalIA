@@ -23,4 +23,6 @@ jobs:
         run: sleep 5
 
       - name: Ejecutar prueba de predicción dentro del contenedor
-        run: docker exec $(docker ps -q --filter ancestor=vitalia-backend) curl -X POST -F "image=@backend/static/uploads/ejemplo.jpg" http://localhost:5000/predict || echo "No se pudo conectar"
+        run: |
+        CONTAINER_ID=$(docker ps -q --filter ancestor=vitalia-backend)
+          docker exec $CONTAINER_ID curl -X POST -F "image=@/app/backend/static/uploads/ejemplo.jpg" http://localhost:5000/predict || echo "No se pudo conectar"
