@@ -1,4 +1,4 @@
-from firebase_config import db
+"""from firebase_config import db
 
 # Crear diagnóstico
 def crear_diagnostico(id_diagnostico, id_imagen, id_afeccion, fecha):
@@ -34,4 +34,20 @@ def eliminar_diagnostico(id_diagnostico):
         db.collection("diagnosticos").document(id_diagnostico).delete()
         return {"mensaje": f"Diagnóstico {id_diagnostico} eliminado"}
     except Exception as e:
-        return {"error": str(e)}
+        return {"error": str(e)}"""
+
+
+
+import firebase_admin
+from firebase_admin import credentials, firestore
+
+# Solo inicializa Firebase una vez
+if not firebase_admin._apps:
+    cred = credentials.Certificate("backend/firebase_config.json")
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+
+def guardar_diagnostico_en_firebase(data):
+    db.collection("diagnosticos").add(data)
+
