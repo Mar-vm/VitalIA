@@ -34,7 +34,7 @@ jobs:
         RESPONSE=$(curl -s -X POST "http://localhost:8000/predecir/" \
           -H "accept: application/json" \
           -H "Content-Type: multipart/form-data" \
-          -F "file=@assets/test_image.jpg")
+          -F "file=@assets/test_image2.jpg")
 
         echo "Respuesta de la API: $RESPONSE"
 
