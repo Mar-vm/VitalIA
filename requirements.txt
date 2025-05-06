@@ -1,4 +1,6 @@
 flask
 gunicorn
 torch
-pillow
+torchvision
+numpy
+Pillow
