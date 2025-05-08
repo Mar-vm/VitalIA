@@ -9,11 +9,10 @@ import os
 app = Flask(__name__)
 
 # 🧠 Reconstituir EfficientNet B0
-model = models.efficientnet_b0(pretrained=False)
+model = models.mobilenet_v2(pretrained=False)
 model.classifier[1] = torch.nn.Linear(in_features=1280, out_features=7)
 
-# 📦 Cargar los pesos del modelo
-state_dict = torch.load("modelo_efficientnet_skin_cancer.pth", map_location=torch.device('cpu'))
+state_dict = torch.load("modelo_mobilenet_skin_cancer.pth", map_location=torch.device('cpu'))
 model.load_state_dict(state_dict)
 model.eval()
 
