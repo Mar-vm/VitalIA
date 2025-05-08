@@ -4,6 +4,7 @@ from PIL import Image
 import io
 import torch
 from torchvision import transforms, models
+import os  # <-- Importante para obtener el puerto asignado por Render
 
 app = Flask(__name__)
 
@@ -34,26 +35,35 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()
-    img_data = data.get('image')
+    try:
+        data = request.get_json()
+        img_data = data.get('image')
+        
+        if not img_data:
+            return jsonify({'error': 'No image provided'}), 400
+
+        image = Image.open(io.BytesIO(base64.b64decode(img_data)))
+
+        # Preprocesar imagen
+        img_tensor = transform(image).unsqueeze(0)
+
+        with torch.no_grad():
+            outputs = model(img_tensor)
+            probs = torch.nn.functional.softmax(outputs[0], dim=0)
+            confidence, predicted_idx = torch.max(probs, 0)
+
+        diagnosis = classes[predicted_idx.item()]
+
+        return jsonify({
+            'diagnosis': diagnosis,
+            'confidence': round(confidence.item(), 4)
+        })
     
-    if not img_data:
-        return jsonify({'error': 'No image provided'}), 400
+    except Exception as e:
+        print(f'Error en /predict: {e}')
+        return jsonify({'error': 'Internal server error', 'details': str(e)}), 500
 
-    image = Image.open(io.BytesIO(base64.b64decode(img_data)))
-
-    # Preprocesar imagen
-    img_tensor = transform(image).unsqueeze(0)
-
-    with torch.no_grad():
-        outputs = model(img_tensor)
-        probs = torch.nn.functional.softmax(outputs[0], dim=0)
-        confidence, predicted_idx = torch.max(probs, 0)
-
-    diagnosis = classes[predicted_idx.item()]
-
-    return jsonify({
-        'diagnosis': diagnosis,
-        'confidence': round(confidence.item(), 4)
-    })
-
+# ⬇️ Agrega este bloque para que Flask funcione en Render
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
