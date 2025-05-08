@@ -1,64 +1,57 @@
-from crud.usuarios import crear_usuario, leer_usuario, actualizar_usuario, eliminar_usuario
-from crud.imagenes import crear_imagen, leer_imagen, actualizar_imagen#, eliminar_imagen
-from crud.diagnosticos import crear_diagnostico, leer_diagnostico#, actualizar_diagnostico, eliminar_diagnostico
-from crud.afecciones import crear_afeccion, leer_afeccion#, actualizar_afeccion, eliminar_afeccion
-from crud.historial import crear_historial, leer_historial#, eliminar_historial
+from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
+from torchvision import models, transforms
+from PIL import Image
+import torch
+import io
 
-def test_crud():
-    print("\n🚀 PROBANDO FIRESTORE CRUD 🚀\n")
+app = FastAPI()
 
-    # CREAR UN USUARIO
-    crear_usuario(
-        "user_002",
-        {"nombre": "Angel", "apellido": "Vargas", "edad": 21, "genero": "Masculino", "correo": "angel@gmail.com"},
-        {"tono_piel": "Morena", "tipo_piel": "Mixta"},
-        {"nombre_e": "Latina", "descripcion_e": "Piel normal"},
-        [{"tipo": "Alergia", "nombre_pad": "Dermatitis", "fecha_detec": "2023-06-15"}]
-    )
+# Permitir CORS (útil si luego conectas desde frontend)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-    # LEER USUARIO
-    leer_usuario("user_002")
+# Cargar modelo MobileNet
+model = models.mobilenet_v2(pretrained=False)
+model.classifier[1] = torch.nn.Linear(1280, 7)
+model.load_state_dict(torch.load("modelo_mobilenet_skin_cancer.pth", map_location=torch.device("cpu")))
+model.eval()
 
-    # ACTUALIZAR USUARIO
-    actualizar_usuario("user_002", {"edad": 21})
-    leer_usuario("user_002")
+# Clases dermatológicas
+classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 
-    # CREAR UNA IMAGEN
-    crear_imagen("img_002", "user_002", "brazo", "https://mis-imagenes.com/foto2.jpg", "2025-03-26", False)
+# Transformaciones
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+])
 
-    # LEER IMAGEN
-    leer_imagen("img_002")
+@app.get("/")
+def root():
+    return {"message": "API de VitalIA (FastAPI) funcionando!"}
 
-    # ACTUALIZAR IMAGEN
-    actualizar_imagen("img_002", {"analizada": True})
-    leer_imagen("img_002")
+@app.post("/predecir/")
+async def predecir(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        image = Image.open(io.BytesIO(contents)).convert("RGB")
+        img_tensor = transform(image).unsqueeze(0)
 
-    # CREAR UN DIAGNÓSTICO
-    crear_diagnostico("diag_002", "img_002", "afeccion_002", "2025-03-26")
+        with torch.no_grad():
+            output = model(img_tensor)
+            probs = torch.nn.functional.softmax(output[0], dim=0)
+            confidence, pred_idx = torch.max(probs, 0)
 
-    # LEER DIAGNÓSTICO
-    leer_diagnostico("diag_002")
+        return {
+            "clase_predicha": classes[pred_idx.item()],
+            "confianza": round(confidence.item(), 4)
+        }
 
-    # CREAR UNA AFECCIÓN
-    crear_afeccion("afeccion_002", "Eccema", "Eccema", "Pomada", "Inflamación de la piel", "https://dermatologia.com/eccema")
-
-    # LEER AFECCIÓN
-    leer_afeccion("afeccion_002")
-
-    # CREAR HISTORIAL
-    crear_historial("hist_002", "diag_002")
-
-    # LEER HISTORIAL
-    leer_historial("hist_002")
-
-    # ELIMINAR TODOS LOS DATOS (Prueba de borrado)
-    #eliminar_historial("hist_001")
-    #eliminar_diagnostico("diag_001")
-    #eliminar_afeccion("afeccion_001")
-    #eliminar_imagen("img_001")
-    #eliminar_usuario("user_001")
-
-    print("\nTEST FINALIZADO: FIRESTORE FUNCIONA\n")
-
-if __name__ == "__main__":
-    test_crud()
+    except Exception as e:
+        return {"error": "No se pudo procesar la imagen", "detalle": str(e)}
