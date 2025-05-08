@@ -7,17 +7,15 @@ from torchvision import transforms, models
 import os  # <-- Importante para obtener el puerto asignado por Render
 
 app = Flask(__name__)
+# Modelo pequeño simulado solo para prueba
+import torch.nn as nn
 
-# Reconstruir arquitectura del modelo (EfficientNet B0)
-model = models.efficientnet_b0(pretrained=False)
-
-# Ajustar la última capa (para 7 clases)
-model.classifier[1] = torch.nn.Linear(in_features=1280, out_features=7)
-
-# Cargar los pesos (state_dict)
-state_dict = torch.load("modelo_efficientnet_skin_cancer.pth", map_location=torch.device('cpu'))
-model.load_state_dict(state_dict)
+model = nn.Sequential(
+    nn.Flatten(),
+    nn.Linear(224 * 224 * 3, 7)
+)
 model.eval()
+
 
 # Transformaciones para la imagen
 transform = transforms.Compose([
