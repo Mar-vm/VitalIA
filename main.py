@@ -51,8 +51,22 @@ async def predecir(file: UploadFile = File(...)):
             probs = torch.nn.functional.softmax(output[0], dim=0)
             confidence, pred_idx = torch.max(probs, 0)
 
+        # Obtener el id de la clase predicha
+        clase_id = classes[pred_idx.item()]
+
+        # Buscar en el JSON la info de esa clase
+        afeccion = next((item for item in data if item["id"] == clase_id), None)
+
+        if afeccion is None:
+            return {
+                "error": "Clase predicha no encontrada en afecciones.json",
+                "clase_id": clase_id
+            }
+
+        # Devolver SOLO id, n_cientifico y confianza
         return {
-            "clase_predicha": classes[pred_idx.item()],
+            "id": afeccion["id"],
+            "n_cientifico": afeccion["n_cientifico"],
             "confianza": round(confidence.item(), 4)
         }
 
@@ -61,3 +75,4 @@ async def predecir(file: UploadFile = File(...)):
             "error": "No se pudo procesar la imagen",
             "detalle": str(e)
         }
+
