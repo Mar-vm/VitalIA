@@ -7,7 +7,7 @@ import io
 
 app = FastAPI()
 
-# ✅ Configuración CORS para pruebas (Expo Web, Postman, etc.)
+# ✅ Configuración CORS para pruebas
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # ⚠️ SOLO para testing. Cambia en producción.
@@ -16,14 +16,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Cargar modelo MobileNet personalizado
-model = models.mobilenet_v2(pretrained=False)
-model.classifier[1] = torch.nn.Linear(1280, 7)
-model.load_state_dict(torch.load("modelo_mobilenet_skin_cancer.pth", map_location=torch.device("cpu")))
+# ✅ Cargar modelo EfficientNet personalizado
+model = models.efficientnet_b0(pretrained=False)
+model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, 100)
+model.load_state_dict(torch.load("efficientnet_sd198.pth", map_location=torch.device("cpu")))
 model.eval()
 
-# ✅ Clases dermatológicas detectables
-classes = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+# ✅ Clases dermatológicas detectables (por ahora nombres genéricos, puedes reemplazarlos por tu lista real)
+classes = [f"clase_{i}" for i in range(100)]  # Si tienes un JSON me dices y te lo adapto
 
 # ✅ Transformaciones de entrada
 transform = transforms.Compose([
@@ -34,7 +34,7 @@ transform = transforms.Compose([
 
 @app.get("/")
 def root():
-    return {"message": "API de VitalIA (FastAPI) funcionando!"}
+    return {"message": "API de VitalIA (100 clases) funcionando!"}
 
 @app.post("/predecir/")
 async def predecir(file: UploadFile = File(...)):
