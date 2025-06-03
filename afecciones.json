@@ -1,0 +1,806 @@
+[
+  {
+    "id": "acanthosis_nigricans",
+    "n_cientifico": "Acanthosis nigricans",
+    "n_comun": "Engrosamiento y oscurecimiento de la piel",
+    "descripcion": "Trastorno cutáneo caracterizado por piel engrosada, aterciopelada y oscura, comúnmente en pliegues corporales.",
+    "recomendaciones": "Consultar con un dermatólogo. Controlar factores subyacentes como obesidad o diabetes.",
+    "recurso": ""
+  },
+  {
+    "id": "acne_vulgaris",
+    "n_cientifico": "Acné vulgar",
+    "n_comun": "Acné",
+    "descripcion": "Afección cutánea frecuente que causa granos, espinillas y puntos negros, principalmente en rostro, pecho y espalda.",
+    "recomendaciones": "Mantener limpieza facial. Uso de productos específicos. Consultar dermatólogo si es severo.",
+    "recurso": ""
+  },
+  {
+    "id": "actinic_cheilitis",
+    "n_cientifico": "Queilitis actínica",
+    "n_comun": "Labios resecos por daño solar",
+    "descripcion": "Inflamación crónica del labio inferior por exposición prolongada al sol.",
+    "recomendaciones": "Usar protector labial con FPS. Consultar dermatólogo si hay cambios visibles.",
+    "recurso": ""
+  },
+  {
+    "id": "actinic_keratosis",
+    "n_cientifico": "Queratosis actínica",
+    "n_comun": "Lesiones precancerosas por el sol",
+    "descripcion": "Lesiones ásperas y escamosas en la piel, causadas por daño solar crónico.",
+    "recomendaciones": "Revisión dermatológica periódica. Protección solar diaria.",
+    "recurso": ""
+  },
+  {
+    "id": "alopecia_areata",
+    "n_cientifico": "Alopecia areata",
+    "n_comun": "Pérdida repentina de cabello",
+    "descripcion": "Enfermedad autoinmune que causa pérdida de cabello en áreas circulares.",
+    "recomendaciones": "Consultar dermatólogo. Evaluar tratamientos médicos o tópicos.",
+    "recurso": ""
+  },
+  {
+    "id": "angiokeratoma",
+    "n_cientifico": "Angiokeratoma",
+    "n_comun": "Lesiones vasculares con engrosamiento",
+    "descripcion": "Pequeñas lesiones cutáneas de color rojo oscuro o negro, ligeramente elevadas.",
+    "recomendaciones": "Consulta dermatológica para descartar malignidad.",
+    "recurso": ""
+  },
+  {
+    "id": "angioma",
+    "n_cientifico": "Angioma",
+    "n_comun": "Manchas rojas benignas",
+    "descripcion": "Acúmulos benignos de vasos sanguíneos visibles como manchas rojas en la piel.",
+    "recomendaciones": "Generalmente no requieren tratamiento. Consultar si crecen o sangran.",
+    "recurso": ""
+  },
+  {
+    "id": "atopic_dermatitis",
+    "n_cientifico": "Dermatitis atópica",
+    "n_comun": "Eczema",
+    "descripcion": "Enfermedad inflamatoria crónica que provoca enrojecimiento y picazón en la piel.",
+    "recomendaciones": "Hidratación diaria. Uso de medicamentos tópicos bajo prescripción.",
+    "recurso": ""
+  },
+  {
+    "id": "atrophie_blanche",
+    "n_cientifico": "Atrophie blanche",
+    "n_comun": "Áreas blanquecinas atróficas",
+    "descripcion": "Zonas de piel atrófica, blancas, rodeadas de telangiectasias.",
+    "recomendaciones": "Tratamiento vascular especializado. Cuidado de la piel.",
+    "recurso": ""
+  },
+  {
+    "id": "basal_cell_carcinoma",
+    "n_cientifico": "Carcinoma basocelular",
+    "n_comun": "Cáncer de piel de células basales",
+    "descripcion": "El tipo más común de cáncer de piel, generalmente en áreas expuestas al sol.",
+    "recomendaciones": "Tratamiento quirúrgico o tópico. Seguimiento médico continuo.",
+    "recurso": ""
+  },
+  {
+    "id": "becker_nevus",
+    "n_cientifico": "Nevus de Becker",
+    "n_comun": "Mancha pigmentada con vello",
+    "descripcion": "Lesión pigmentada con aumento del vello, generalmente en la parte superior del tronco.",
+    "recomendaciones": "Generalmente benigno. Revisión dermatológica si hay cambios.",
+    "recurso": ""
+  },
+  {
+    "id": "blue_nevus",
+    "n_cientifico": "Nevus azul",
+    "n_comun": "Lunar azul",
+    "descripcion": "Lunar benigno de color azul-grisáceo, resultado de melanocitos profundos.",
+    "recomendaciones": "Monitoreo de cambios en tamaño o color.",
+    "recurso": ""
+  },
+  {
+    "id": "cafe_au_lait_macule",
+    "n_cientifico": "Mácula café con leche",
+    "n_comun": "Mancha marrón clara",
+    "descripcion": "Manchas marrones claras planas, presentes desde la infancia.",
+    "recomendaciones": "Consultar si son múltiples o si aparecen nuevas manchas.",
+    "recurso": ""
+  },
+  {
+    "id": "calcinosis_cutis",
+    "n_cientifico": "Calcinosis cutis",
+    "n_comun": "Depósitos de calcio en la piel",
+    "descripcion": "Acumulación anormal de sales de calcio en la piel y tejidos blandos.",
+    "recomendaciones": "Evaluación médica para determinar causa subyacente.",
+    "recurso": ""
+  },
+  {
+    "id": "candida_intertrigo",
+    "n_cientifico": "Intertrigo candidiásico",
+    "n_comun": "Infección por hongos en pliegues",
+    "descripcion": "Infección por cándida en pliegues de la piel, provocando enrojecimiento y maceración.",
+    "recomendaciones": "Mantener la zona seca. Antifúngicos tópicos.",
+    "recurso": ""
+  },
+  {
+    "id": "capillaritis",
+    "n_cientifico": "Capilaritis",
+    "n_comun": "Inflamación de pequeños vasos sanguíneos",
+    "descripcion": "Erupción petequial benigna causada por inflamación capilar.",
+    "recomendaciones": "Generalmente no requiere tratamiento. Observación clínica.",
+    "recurso": ""
+  },
+  {
+    "id": "cherry_angioma",
+    "n_cientifico": "Angioma cereza",
+    "n_comun": "Manchas rojas pequeñas",
+    "descripcion": "Pequeñas lesiones vasculares benignas de color rojo brillante.",
+    "recomendaciones": "No requieren tratamiento salvo por razones estéticas.",
+    "recurso": ""
+  },
+  {
+    "id": "chondrodermatitis_nodularis_helicis",
+    "n_cientifico": "Condrodermatitis nodular de la hélice",
+    "n_comun": "Nódulo doloroso en la oreja",
+    "descripcion": "Nódulo doloroso en el cartílago de la oreja, a menudo relacionado con presión crónica.",
+    "recomendaciones": "Evitar la presión local. Opciones quirúrgicas si persiste.",
+    "recurso": ""
+  },
+  {
+    "id": "clear_cell_acanthoma",
+    "n_cientifico": "Acanthoma de células claras",
+    "n_comun": "Lesión cutánea benigna",
+    "descripcion": "Lesión benigna de crecimiento lento, generalmente en extremidades.",
+    "recomendaciones": "Evaluación dermatológica para confirmar diagnóstico.",
+    "recurso": ""
+  },
+  {
+    "id": "clubbing",
+    "n_cientifico": "Dedos en palillo de tambor",
+    "n_comun": "Engrosamiento de los dedos",
+    "descripcion": "Engrosamiento y ensanchamiento de las falanges distales, asociado a enfermedades sistémicas.",
+    "recomendaciones": "Evaluación médica para descartar causas subyacentes.",
+    "recurso": ""
+  },
+  {
+    "id": "compound_nevus",
+    "n_cientifico": "Nevus compuesto",
+    "n_comun": "Lunar compuesto",
+    "descripcion": "Lunar benigno con componentes dérmicos y epidérmicos.",
+    "recomendaciones": "Monitoreo regular por dermatólogo.",
+    "recurso": ""
+  },
+  {
+    "id": "confluent_and_reticulated_papillomatosis",
+    "n_cientifico": "Papilomatosis confluyente y reticulada",
+    "n_comun": "Lesiones cutáneas reticuladas",
+    "descripcion": "Lesiones hiperpigmentadas con patrón reticulado, generalmente en tórax y abdomen.",
+    "recomendaciones": "Tratamiento dermatológico específico.",
+    "recurso": ""
+  },
+  {
+    "id": "contact_dermatitis",
+    "n_cientifico": "Dermatitis de contacto",
+    "n_comun": "Reacción cutánea por contacto",
+    "descripcion": "Reacción inflamatoria de la piel ante alérgenos o irritantes.",
+    "recomendaciones": "Identificar y evitar el agente causal. Uso de cremas antiinflamatorias.",
+    "recurso": ""
+  },
+  {
+    "id": "cutaneous_t_cell_lymphoma",
+    "n_cientifico": "Linfoma cutáneo de células T",
+    "n_comun": "Cáncer de piel de células T",
+    "descripcion": "Forma rara de linfoma que afecta la piel.",
+    "recomendaciones": "Tratamiento especializado oncológico y dermatológico.",
+    "recurso": ""
+  },
+  {
+    "id": "cutaneous_tag",
+    "n_cientifico": "Fibroma blando",
+    "n_comun": "Acrocordón",
+    "descripcion": "Pequeños colgajos de piel benignos en zonas de roce.",
+    "recomendaciones": "Remoción si causa molestias o por razones estéticas.",
+    "recurso": ""
+  },
+  {
+    "id": "dermatofibroma",
+    "n_cientifico": "Dermatofibroma",
+    "n_comun": "Fibroma cutáneo",
+    "descripcion": "Nódulo benigno pequeño y firme, generalmente en piernas o brazos.",
+    "recomendaciones": "Generalmente no requiere tratamiento. Remoción si molesta.",
+    "recurso": ""
+  },
+  {
+    "id": "dermatomyositis",
+    "n_cientifico": "Dermatomiositis",
+    "n_comun": "Inflamación de piel y músculos",
+    "descripcion": "Enfermedad autoinmune que causa debilidad muscular y erupciones cutáneas.",
+    "recomendaciones": "Tratamiento médico especializado. Monitoreo continuo.",
+    "recurso": ""
+  },
+  {
+    "id": "dermatosis_papulosa_nigra",
+    "n_cientifico": "Dermatosis papulosa nigra",
+    "n_comun": "Pequeñas pápulas pigmentadas",
+    "descripcion": "Pequeñas pápulas pigmentadas, común en personas de piel oscura.",
+    "recomendaciones": "Remoción estética si es deseada.",
+    "recurso": ""
+  },
+  {
+    "id": "discoid_lupus_erythematosus",
+    "n_cientifico": "Lupus eritematoso discoide",
+    "n_comun": "Lesiones de lupus en la piel",
+    "descripcion": "Lesiones cutáneas crónicas asociadas al lupus.",
+    "recomendaciones": "Protección solar. Tratamiento inmunomodulador.",
+    "recurso": ""
+  },
+  {
+    "id": "drug_eruption",
+    "n_cientifico": "Erupción medicamentosa",
+    "n_comun": "Reacción cutánea a medicamentos",
+    "descripcion": "Reacción adversa de la piel tras uso de medicamentos.",
+    "recomendaciones": "Suspender medicamento causal. Tratamiento sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "ecchymosis",
+    "n_cientifico": "Equimosis",
+    "n_comun": "Moretón",
+    "descripcion": "Acumulación de sangre bajo la piel, generalmente por trauma.",
+    "recomendaciones": "Aplicar frío local. Consulta si es espontánea.",
+    "recurso": ""
+  },
+  {
+    "id": "epidermal_inclusion_cyst",
+    "n_cientifico": "Quiste de inclusión epidérmica",
+    "n_comun": "Quiste sebáceo",
+    "descripcion": "Quiste benigno lleno de queratina bajo la piel.",
+    "recomendaciones": "Remoción quirúrgica si es sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "epidermal_nevus",
+    "n_cientifico": "Nevus epidérmico",
+    "n_comun": "Lunar epidérmico",
+    "descripcion": "Lesión cutánea congénita con crecimiento excesivo de epidermis.",
+    "recomendaciones": "Evaluación dermatológica. Remoción si es deseada.",
+    "recurso": ""
+  },
+  {
+    "id": "epidermoid_cyst",
+    "n_cientifico": "Quiste epidermoide",
+    "n_comun": "Quiste sebáceo",
+    "descripcion": "Quiste benigno lleno de material sebáceo.",
+    "recomendaciones": "Remoción si causa molestias o infección.",
+    "recurso": ""
+  },
+  {
+    "id": "erythema_ab_igne",
+    "n_cientifico": "Eritema ab igne",
+    "n_comun": "Eritema por calor crónico",
+    "descripcion": "Manchas reticuladas en la piel por exposición prolongada al calor.",
+    "recomendaciones": "Evitar fuente de calor. Monitoreo de cambios.",
+    "recurso": ""
+  },
+  {
+    "id": "erythema_annulare_centrifugum",
+    "n_cientifico": "Eritema anular centrífugo",
+    "n_comun": "Erupción anular",
+    "descripcion": "Erupción cutánea en forma de anillos en expansión.",
+    "recomendaciones": "Identificar causa subyacente. Tratamiento sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "erythema_gyratum_repens",
+    "n_cientifico": "Eritema gyratum repens",
+    "n_comun": "Erupción ondulada",
+    "descripcion": "Erupción cutánea rara con patrón en ondas, asociada a cáncer.",
+    "recomendaciones": "Evaluación oncológica urgente.",
+    "recurso": ""
+  },
+  {
+    "id": "erythema_migrans",
+    "n_cientifico": "Eritema migrans",
+    "n_comun": "Lesión temprana de la enfermedad de Lyme",
+    "descripcion": "Erupción cutánea característica en forma de diana.",
+    "recomendaciones": "Tratamiento antibiótico. Evaluación médica.",
+    "recurso": ""
+  },
+  {
+    "id": "erythema_multiforme",
+    "n_cientifico": "Eritema multiforme",
+    "n_comun": "Erupción en diana",
+    "descripcion": "Reacción cutánea aguda con lesiones en forma de diana.",
+    "recomendaciones": "Identificar causa. Tratamiento sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "erythema_nodosum",
+    "n_cientifico": "Eritema nudoso",
+    "n_comun": "Nódulos dolorosos en piernas",
+    "descripcion": "Nódulos inflamatorios dolorosos en la parte anterior de las piernas.",
+    "recomendaciones": "Identificar causa subyacente. Tratamiento antiinflamatorio.",
+    "recurso": ""
+  },
+  {
+    "id": "erythrasma",
+    "n_cientifico": "Eritrasma",
+    "n_comun": "Infección bacteriana superficial",
+    "descripcion": "Infección cutánea crónica en pliegues, causada por Corynebacterium.",
+    "recomendaciones": "Antibióticos tópicos o sistémicos.",
+    "recurso": ""
+  },
+  {
+    "id": "fibroepithelial_polyp",
+    "n_cientifico": "Pólipo fibroepitelial",
+    "n_comun": "Acrocordón",
+    "descripcion": "Pequeño colgajo de piel blando.",
+    "recomendaciones": "Remoción si es deseada.",
+    "recurso": ""
+  },
+  {
+    "id": "fixed_drug_eruption",
+    "n_cientifico": "Erupción medicamentosa fija",
+    "n_comun": "Reacción fija a medicamento",
+    "descripcion": "Lesión recurrente en el mismo sitio tras exposición a un fármaco.",
+    "recomendaciones": "Evitar el medicamento causal.",
+    "recurso": ""
+  },
+  {
+    "id": "folliculitis",
+    "n_cientifico": "Foliculitis",
+    "n_comun": "Inflamación de folículos pilosos",
+    "descripcion": "Inflamación e infección de los folículos del cabello.",
+    "recomendaciones": "Higiene adecuada. Antisépticos o antibióticos tópicos.",
+    "recurso": ""
+  },
+  {
+    "id": "fox_fordyce_disease",
+    "n_cientifico": "Enfermedad de Fox-Fordyce",
+    "n_comun": "Obstrucción de glándulas sudoríparas",
+    "descripcion": "Enfermedad rara que afecta las glándulas sudoríparas apocrinas.",
+    "recomendaciones": "Tratamiento dermatológico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "freckles",
+    "n_cientifico": "Efélides",
+    "n_comun": "Pecas",
+    "descripcion": "Manchas marrones pequeñas inducidas por el sol.",
+    "recomendaciones": "Protección solar.",
+    "recurso": ""
+  },
+  {
+    "id": "fungal_infection",
+    "n_cientifico": "Infección fúngica",
+    "n_comun": "Infección por hongos",
+    "descripcion": "Infección cutánea causada por hongos dermatofitos.",
+    "recomendaciones": "Antifúngicos tópicos o sistémicos.",
+    "recurso": ""
+  },
+  {
+    "id": "gianotti_crosti_syndrome",
+    "n_cientifico": "Síndrome de Gianotti-Crosti",
+    "n_comun": "Erupción viral en niños",
+    "descripcion": "Erupción viral autolimitada en niños pequeños.",
+    "recomendaciones": "Tratamiento sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "granuloma_annulare",
+    "n_cientifico": "Granuloma anular",
+    "n_comun": "Lesión anular benigna",
+    "descripcion": "Lesión cutánea benigna en forma de anillo.",
+    "recomendaciones": "Generalmente no requiere tratamiento.",
+    "recurso": ""
+  },
+  {
+    "id": "granuloma_pyogenicum",
+    "n_cientifico": "Granuloma piogénico",
+    "n_comun": "Lesión vascular sangrante",
+    "descripcion": "Lesión vascular que sangra fácilmente.",
+    "recomendaciones": "Remoción quirúrgica.",
+    "recurso": ""
+  },
+  {
+    "id": "guttate_psoriasis",
+    "n_cientifico": "Psoriasis en gotas",
+    "n_comun": "Psoriasis en forma de gotas",
+    "descripcion": "Forma de psoriasis con lesiones en forma de gotas.",
+    "recomendaciones": "Tratamiento dermatológico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "halo_nevus",
+    "n_cientifico": "Nevus halo",
+    "n_comun": "Lunar con halo despigmentado",
+    "descripcion": "Lunar rodeado por un halo despigmentado blanco.",
+    "recomendaciones": "Monitoreo dermatológico.",
+    "recurso": ""
+  },
+  {
+    "id": "hidradenitis_suppurativa",
+    "n_cientifico": "Hidradenitis supurativa",
+    "n_comun": "Abscesos en pliegues de la piel",
+    "descripcion": "Enfermedad inflamatoria crónica que causa nódulos y abscesos en pliegues.",
+    "recomendaciones": "Tratamiento médico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "hirsutism",
+    "n_cientifico": "Hirsutismo",
+    "n_comun": "Crecimiento excesivo de vello",
+    "descripcion": "Crecimiento excesivo de vello en mujeres en áreas típicamente masculinas.",
+    "recomendaciones": "Evaluación hormonal. Opciones cosméticas.",
+    "recurso": ""
+  },
+  {
+    "id": "hypertrophic_scar",
+    "n_cientifico": "Cicatriz hipertrófica",
+    "n_comun": "Cicatriz elevada",
+    "descripcion": "Cicatriz gruesa y elevada dentro de los límites de la herida original.",
+    "recomendaciones": "Tratamientos tópicos, láser o infiltraciones.",
+    "recurso": ""
+  },
+  {
+    "id": "ichthyosis_vulgaris",
+    "n_cientifico": "Ictiosis vulgar",
+    "n_comun": "Piel seca y escamosa",
+    "descripcion": "Trastorno genético que causa piel seca y escamosa.",
+    "recomendaciones": "Hidratación intensiva diaria.",
+    "recurso": ""
+  },
+  {
+    "id": "infantile_hemangioma",
+    "n_cientifico": "Hemangioma infantil",
+    "n_comun": "Tumor benigno vascular en bebés",
+    "descripcion": "Proliferación benigna de vasos sanguíneos en la infancia.",
+    "recomendaciones": "Observación o tratamiento según tamaño y localización.",
+    "recurso": ""
+  },
+  {
+    "id": "insect_bite_reaction",
+    "n_cientifico": "Reacción a picadura de insecto",
+    "n_comun": "Reacción cutánea por insecto",
+    "descripcion": "Inflamación local tras picadura de insecto.",
+    "recomendaciones": "Alivio sintomático. Evitar rascado.",
+    "recurso": ""
+  },
+  {
+    "id": "intertrigo",
+    "n_cientifico": "Intertrigo",
+    "n_comun": "Irritación en pliegues cutáneos",
+    "descripcion": "Inflamación y maceración en pliegues de la piel.",
+    "recomendaciones": "Mantener seco. Tratamiento tópico.",
+    "recurso": ""
+  },
+  {
+    "id": "keloid",
+    "n_cientifico": "Queloide",
+    "n_comun": "Cicatriz queloide",
+    "descripcion": "Crecimiento excesivo de tejido cicatricial más allá de la herida original.",
+    "recomendaciones": "Infiltraciones, láser, cirugía.",
+    "recurso": ""
+  },
+  {
+    "id": "keratoacanthoma",
+    "n_cientifico": "Queratoacantoma",
+    "n_comun": "Lesión cutánea de rápido crecimiento",
+    "descripcion": "Lesión benigna de rápido crecimiento que puede resolverse espontáneamente.",
+    "recomendaciones": "Evaluación dermatológica. Posible remoción.",
+    "recurso": ""
+  },
+  {
+    "id": "keratosis_pilaris",
+    "n_cientifico": "Queratosis pilaris",
+    "n_comun": "Piel de gallina",
+    "descripcion": "Pequeñas protuberancias ásperas en la piel, especialmente en brazos y muslos.",
+    "recomendaciones": "Hidratación y exfoliación suave.",
+    "recurso": ""
+  },
+  {
+    "id": "lichen_planus",
+    "n_cientifico": "Liquen plano",
+    "n_comun": "Erupción púrpura pruriginosa",
+    "descripcion": "Erupción cutánea pruriginosa con lesiones planas y violáceas.",
+    "recomendaciones": "Tratamiento con corticosteroides tópicos.",
+    "recurso": ""
+  },
+  {
+    "id": "lichen_sclerosus",
+    "n_cientifico": "Liquen escleroso",
+    "n_comun": "Piel delgada y blanquecina",
+    "descripcion": "Trastorno inflamatorio crónico que afecta la piel y mucosas.",
+    "recomendaciones": "Tratamiento con corticosteroides.",
+    "recurso": ""
+  },
+  {
+    "id": "lichen_simplex_chronicus",
+    "n_cientifico": "Liquen simple crónico",
+    "n_comun": "Engrosamiento de la piel por rascado crónico",
+    "descripcion": "Engrosamiento y pigmentación de la piel por rascado repetido.",
+    "recomendaciones": "Eliminar el rascado. Tratamiento antiinflamatorio.",
+    "recurso": ""
+  },
+  {
+    "id": "lipoma",
+    "n_cientifico": "Lipoma",
+    "n_comun": "Bulto graso benigno",
+    "descripcion": "Tumor benigno compuesto por tejido graso.",
+    "recomendaciones": "Remoción si es molesto o crece.",
+    "recurso": ""
+  },
+  {
+    "id": "livedo_reticularis",
+    "n_cientifico": "Livedo reticularis",
+    "n_comun": "Moteado rojizo-violáceo en la piel",
+    "descripcion": "Patrón reticulado en la piel causado por alteraciones vasculares.",
+    "recomendaciones": "Evaluación médica para causas subyacentes.",
+    "recurso": ""
+  },
+  {
+    "id": "lupus_erythematosus",
+    "n_cientifico": "Lupus eritematoso",
+    "n_comun": "Lupus cutáneo",
+    "descripcion": "Enfermedad autoinmune que puede afectar la piel.",
+    "recomendaciones": "Protección solar. Tratamiento médico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "melanoma",
+    "n_cientifico": "Melanoma maligno",
+    "n_comun": "Cáncer de piel",
+    "descripcion": "Forma agresiva de cáncer de piel originado en melanocitos.",
+    "recomendaciones": "Tratamiento quirúrgico urgente. Seguimiento oncológico.",
+    "recurso": ""
+  },
+  {
+    "id": "melasma",
+    "n_cientifico": "Melasma",
+    "n_comun": "Manchas oscuras en el rostro",
+    "descripcion": "Hiperpigmentación facial frecuente en mujeres.",
+    "recomendaciones": "Protección solar estricta. Tratamientos despigmentantes.",
+    "recurso": ""
+  },
+  {
+    "id": "milia",
+    "n_cientifico": "Milia",
+    "n_comun": "Quistes de queratina",
+    "descripcion": "Pequeños quistes blancos superficiales.",
+    "recomendaciones": "Extracción dermatológica si es deseada.",
+    "recurso": ""
+  },
+  {
+    "id": "molluscum_contagiosum",
+    "n_cientifico": "Molusco contagioso",
+    "n_comun": "Lesiones virales umbilicadas",
+    "descripcion": "Lesiones virales benignas de la piel, frecuentes en niños.",
+    "recomendaciones": "Tratamiento si son numerosas o inflamadas.",
+    "recurso": ""
+  },
+  {
+    "id": "morfea",
+    "n_cientifico": "Morfea",
+    "n_comun": "Esclerodermia localizada",
+    "descripcion": "Engrosamiento y endurecimiento localizado de la piel.",
+    "recomendaciones": "Tratamiento dermatológico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "mycosis_fungoides",
+    "n_cientifico": "Micosis fungoide",
+    "n_comun": "Linfoma cutáneo",
+    "descripcion": "Forma de linfoma cutáneo de células T.",
+    "recomendaciones": "Tratamiento oncológico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "naevus_comedonicus",
+    "n_cientifico": "Nevus comedónico",
+    "n_comun": "Lunar con comedones",
+    "descripcion": "Lesión cutánea con agrupación de comedones.",
+    "recomendaciones": "Tratamiento dermatológico si es sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "neurofibroma",
+    "n_cientifico": "Neurofibroma",
+    "n_comun": "Tumor benigno de nervios",
+    "descripcion": "Tumor benigno que afecta nervios periféricos.",
+    "recomendaciones": "Seguimiento neurológico y dermatológico.",
+    "recurso": ""
+  },
+  {
+    "id": "nevus_sebaceous",
+    "n_cientifico": "Nevus sebáceo",
+    "n_comun": "Lunar sebáceo",
+    "descripcion": "Lesión cutánea congénita con proliferación de glándulas sebáceas.",
+    "recomendaciones": "Monitoreo. Remoción si es necesario.",
+    "recurso": ""
+  },
+  {
+    "id": "nodular_basal_cell_carcinoma",
+    "n_cientifico": "Carcinoma basocelular nodular",
+    "n_comun": "Cáncer de piel nodular",
+    "descripcion": "Forma nodular del carcinoma basocelular.",
+    "recomendaciones": "Tratamiento quirúrgico.",
+    "recurso": ""
+  },
+  {
+    "id": "nummular_eczema",
+    "n_cientifico": "Eccema numular",
+    "n_comun": "Eccema en placas redondas",
+    "descripcion": "Eccema caracterizado por placas redondas u ovaladas.",
+    "recomendaciones": "Hidratación. Corticoides tópicos.",
+    "recurso": ""
+  },
+  {
+    "id": "onychomycosis",
+    "n_cientifico": "Onicomicosis",
+    "n_comun": "Infección fúngica de las uñas",
+    "descripcion": "Infección micótica que afecta las uñas.",
+    "recomendaciones": "Antifúngicos tópicos o sistémicos.",
+    "recurso": ""
+  },
+  {
+    "id": "onychotillomania",
+    "n_cientifico": "Onicotilomanía",
+    "n_comun": "Trastorno de arrancarse las uñas",
+    "descripcion": "Trastorno compulsivo que lleva a dañarse las uñas.",
+    "recomendaciones": "Terapia psicológica. Tratamiento dermatológico.",
+    "recurso": ""
+  },
+  {
+    "id": "palmoplantar_pustulosis",
+    "n_cientifico": "Pustulosis palmoplantar",
+    "n_comun": "Pústulas en palmas y plantas",
+    "descripcion": "Enfermedad pustulosa crónica en palmas y plantas.",
+    "recomendaciones": "Tratamiento dermatológico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "panniculitis",
+    "n_cientifico": "Paniculitis",
+    "n_comun": "Inflamación del tejido graso subcutáneo",
+    "descripcion": "Inflamación del tejido adiposo subcutáneo.",
+    "recomendaciones": "Evaluación médica para causas subyacentes.",
+    "recurso": ""
+  },
+  {
+    "id": "papilloma",
+    "n_cientifico": "Papiloma",
+    "n_comun": "Lesión papilomatosa benigna",
+    "descripcion": "Lesión cutánea benigna con aspecto de papila.",
+    "recomendaciones": "Remoción si es deseada.",
+    "recurso": ""
+  },
+  {
+    "id": "papular_urticaria",
+    "n_cientifico": "Urticaria papular",
+    "n_comun": "Reacción a picaduras de insecto",
+    "descripcion": "Reacción alérgica a picaduras, con pápulas persistentes.",
+    "recomendaciones": "Evitar picaduras. Tratamiento sintomático.",
+    "recurso": ""
+  },
+  {
+    "id": "parapsoriasis",
+    "n_cientifico": "Parapsoriasis",
+    "n_comun": "Erupción cutánea similar a psoriasis",
+    "descripcion": "Grupo de trastornos con lesiones parecidas a psoriasis.",
+    "recomendaciones": "Tratamiento dermatológico.",
+    "recurso": ""
+  },
+  {
+    "id": "pediculosis_capitis",
+    "n_cientifico": "Pediculosis capitis",
+    "n_comun": "Piojos en el cuero cabelludo",
+    "descripcion": "Infestación por piojos en la cabeza.",
+    "recomendaciones": "Tratamiento pediculicida. Higiene del entorno.",
+    "recurso": ""
+  },
+  {
+    "id": "pemphigus_foliaceus",
+    "n_cientifico": "Pénfigo foliáceo",
+    "n_comun": "Enfermedad ampollosa autoinmune",
+    "descripcion": "Enfermedad autoinmune que causa ampollas superficiales.",
+    "recomendaciones": "Tratamiento inmunosupresor.",
+    "recurso": ""
+  },
+  {
+    "id": "perioral_dermatitis",
+    "n_cientifico": "Dermatitis perioral",
+    "n_comun": "Erupción alrededor de la boca",
+    "descripcion": "Erupción papular y pustular perioral.",
+    "recomendaciones": "Evitar corticoides. Tratamiento dermatológico.",
+    "recurso": ""
+  },
+  {
+    "id": "petechiae",
+    "n_cientifico": "Petequias",
+    "n_comun": "Pequeñas manchas rojas",
+    "descripcion": "Pequeñas lesiones vasculares puntiformes.",
+    "recomendaciones": "Evaluación para causas sistémicas.",
+    "recurso": ""
+  },
+  {
+    "id": "phototoxic_reaction",
+    "n_cientifico": "Reacción fototóxica",
+    "n_comun": "Reacción cutánea por luz + sustancia",
+    "descripcion": "Reacción cutánea exagerada tras exposición a luz UV y sustancias químicas.",
+    "recomendaciones": "Evitar exposición solar. Protección UV.",
+    "recurso": ""
+  },
+  {
+    "id": "pigmented_basal_cell_carcinoma",
+    "n_cientifico": "Carcinoma basocelular pigmentado",
+    "n_comun": "Cáncer de piel pigmentado",
+    "descripcion": "Variante pigmentada del carcinoma basocelular.",
+    "recomendaciones": "Tratamiento quirúrgico.",
+    "recurso": ""
+  },
+  {
+    "id": "pilar_cyst",
+    "n_cientifico": "Quiste piloso",
+    "n_comun": "Quiste en el cuero cabelludo",
+    "descripcion": "Quiste benigno en el folículo piloso.",
+    "recomendaciones": "Remoción quirúrgica.",
+    "recurso": ""
+  },
+  {
+    "id": "pityriasis_alba",
+    "n_cientifico": "Pitiriaisis alba",
+    "n_comun": "Manchas blancas hipopigmentadas",
+    "descripcion": "Manchas hipopigmentadas benignas en niños.",
+    "recomendaciones": "Hidratación. Protección solar.",
+    "recurso": ""
+  },
+  {
+    "id": "pityriasis_rosea",
+    "n_cientifico": "Pitiriaisis rosada",
+    "n_comun": "Erupción en árbol de Navidad",
+    "descripcion": "Erupción viral autolimitada en tronco.",
+    "recomendaciones": "Tratamiento sintomático. Se resuelve espontáneamente.",
+    "recurso": ""
+  },
+  {
+    "id": "pityriasis_rubra_pilaris",
+    "n_cientifico": "Pitiriaisis rubra pilaris",
+    "n_comun": "Trastorno raro con enrojecimiento y escamas",
+    "descripcion": "Enfermedad rara con engrosamiento de la piel y escamas.",
+    "recomendaciones": "Tratamiento dermatológico especializado.",
+    "recurso": ""
+  },
+  {
+    "id": "porokeratosis",
+    "n_cientifico": "Porokeratosis",
+    "n_comun": "Lesión con borde escamoso",
+    "descripcion": "Lesión cutánea con borde escamoso elevado.",
+    "recomendaciones": "Protección solar. Evaluación de riesgo de malignización.",
+    "recurso": ""
+  },
+  {
+    "id": "psoriasis",
+    "n_cientifico": "Psoriasis vulgar",
+    "n_comun": "Psoriasis",
+    "descripcion": "Enfermedad inflamatoria crónica de la piel.",
+    "recomendaciones": "Tratamiento dermatológico según gravedad.",
+    "recurso": ""
+  },
+  {
+    "id": "rosacea",
+    "n_cientifico": "Rosácea",
+    "n_comun": "Enrojecimiento facial crónico",
+    "descripcion": "Enfermedad cutánea crónica con enrojecimiento y pápulas.",
+    "recomendaciones": "Evitar desencadenantes. Tratamiento tópico o sistémico.",
+    "recurso": ""
+  },
+  {
+    "id": "seborrheic_keratosis",
+    "n_cientifico": "Queratosis seborreica",
+    "n_comun": "Lesión cutánea benigna verrugosa",
+    "descripcion": "Lesión cutánea verrugosa de color marrón.",
+    "recomendaciones": "Remoción si es deseada.",
+    "recurso": ""
+  }
+]
+
+
+
+
