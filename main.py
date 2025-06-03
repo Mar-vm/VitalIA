@@ -4,6 +4,7 @@ from torchvision import models, transforms
 from PIL import Image
 import torch
 import io
+import json
 
 app = FastAPI()
 
@@ -16,14 +17,16 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ✅ Cargar clases desde el JSON
+with open("afecciones.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+    classes = [item["id"] for item in data]
+
 # ✅ Cargar modelo EfficientNet personalizado
 model = models.efficientnet_b0(pretrained=False)
-model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, 100)
+model.classifier[1] = torch.nn.Linear(model.classifier[1].in_features, len(classes))
 model.load_state_dict(torch.load("efficientnet_sd198.pth", map_location=torch.device("cpu")))
 model.eval()
-
-# ✅ Clases dermatológicas detectables (por ahora nombres genéricos, puedes reemplazarlos por tu lista real)
-classes = [f"clase_{i}" for i in range(100)]  # Si tienes un JSON me dices y te lo adapto
 
 # ✅ Transformaciones de entrada
 transform = transforms.Compose([
