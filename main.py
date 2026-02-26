@@ -34,32 +34,53 @@ app = FastAPI(
 )
 
 # ─── CORS ─────────────────────────────────────────────────────────────────────
-# Configura ALLOWED_ORIGINS en Render/GitHub Actions/etc con una lista separada por comas:
-#   ALLOWED_ORIGINS="https://tu-frontend.com,https://tu-app.vercel.app,http://localhost:5173"
+# Objetivo: que Expo Web / navegadores SIEMPRE puedan hacer preflight (OPTIONS)
+# sin que tengas que adivinar el puerto/origen.
 #
-# Si ALLOWED_ORIGINS no está configurada, usa orígenes típicos de desarrollo.
+# Modo:
+# - Si defines ALLOWED_ORIGINS_REGEX -> se usa regex (recomendado para DEV).
+# - Si defines ALLOWED_ORIGINS -> lista separada por comas.
+# - Si no defines nada -> fallback a localhost comunes.
+#
+# En producción, fija ALLOWED_ORIGINS con tus dominios reales.
+origins_regex = os.getenv("ALLOWED_ORIGINS_REGEX", "").strip()
 _allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "")
 origins = [o.strip() for o in _allowed_origins_env.split(",") if o.strip()]
 
-if not origins:
+if not origins and not origins_regex:
     origins = [
         "http://localhost:3000",
         "http://localhost:5173",
+        "http://localhost:8081",
         "http://localhost:19006",
         "http://127.0.0.1:3000",
         "http://127.0.0.1:5173",
+        "http://127.0.0.1:8081",
         "http://127.0.0.1:19006",
     ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,          # No uses "*" si allow_credentials=True
+cors_kwargs = dict(
     allow_credentials=True,
-    allow_methods=["*"],            # Incluye OPTIONS (preflight)
+    allow_methods=["*"],  # incluye OPTIONS (preflight)
     allow_headers=["*"],
     expose_headers=["*"],
     max_age=86400,
 )
+
+if origins_regex:
+    # Ejemplo DEV:
+    # ALLOWED_ORIGINS_REGEX="https?://.*"
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origin_regex=origins_regex,
+        **cors_kwargs,
+    )
+else:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,  # No uses "*" si allow_credentials=True
+        **cors_kwargs,
+    )
 
 # ─── Endpoints ────────────────────────────────────────────────────────────────
 
@@ -81,22 +102,7 @@ async def predict(file: UploadFile = File(...)):
 
     - Formatos aceptados: jpg, jpeg, png, webp
     - Tamaño máximo recomendado: 10MB
-
-    Respuesta:
-    {
-        "prediction": "mel",
-        "disease_name": "Melanoma",
-        "confidence": 87.34,
-        "risk_level": "ALTO - Maligno",
-        "top3": [
-            {"class": "mel", "disease": "Melanoma",             "probability": 87.34},
-            {"class": "bcc", "disease": "Carcinoma Basocelular","probability": 8.21},
-            {"class": "akiec","disease": "Queratosis Actínica", "probability": 3.10}
-        ],
-        "disclaimer": "Este modelo es solo de apoyo diagnóstico..."
-    }
     """
-    # Validar tipo de archivo
     allowed = {"image/jpeg", "image/jpg", "image/png", "image/webp"}
     if file.content_type not in allowed:
         raise HTTPException(
@@ -104,7 +110,6 @@ async def predict(file: UploadFile = File(...)):
             detail=f"Formato no soportado: {file.content_type}. Usa jpg, png o webp.",
         )
 
-    # Leer y predecir
     image_bytes = await file.read()
     if len(image_bytes) == 0:
         raise HTTPException(status_code=400, detail="Imagen vacía")
