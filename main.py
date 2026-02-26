@@ -9,8 +9,8 @@ from inference import SkinPredictor
 import os
 
 # ─── Configuración ────────────────────────────────────────────────────────────
-MODEL_PATH    = os.getenv('MODEL_PATH',    'skin_cancer_model.onnx')
-METADATA_PATH = os.getenv('METADATA_PATH', 'model_metadata.json')
+MODEL_PATH = os.getenv("MODEL_PATH", "skin_cancer_model.onnx")
+METADATA_PATH = os.getenv("METADATA_PATH", "model_metadata.json")
 
 predictor: SkinPredictor = None
 
@@ -30,19 +30,39 @@ app = FastAPI(
     title="SkinAI API",
     description="API para detección de enfermedades de piel con IA",
     version="1.0.0",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
-# CORS — permite peticiones desde React Native
+# ─── CORS ─────────────────────────────────────────────────────────────────────
+# Configura ALLOWED_ORIGINS en Render/GitHub Actions/etc con una lista separada por comas:
+#   ALLOWED_ORIGINS="https://tu-frontend.com,https://tu-app.vercel.app,http://localhost:5173"
+#
+# Si ALLOWED_ORIGINS no está configurada, usa orígenes típicos de desarrollo.
+_allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "")
+origins = [o.strip() for o in _allowed_origins_env.split(",") if o.strip()]
+
+if not origins:
+    origins = [
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://localhost:19006",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:19006",
+    ]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # En producción cambiar por el dominio real
-    allow_methods=["*"],
+    allow_origins=origins,          # No uses "*" si allow_credentials=True
+    allow_credentials=True,
+    allow_methods=["*"],            # Incluye OPTIONS (preflight)
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=86400,
 )
 
-
 # ─── Endpoints ────────────────────────────────────────────────────────────────
+
 
 @app.get("/")
 def root():
@@ -69,7 +89,7 @@ async def predict(file: UploadFile = File(...)):
         "confidence": 87.34,
         "risk_level": "ALTO - Maligno",
         "top3": [
-            {"class": "mel", "disease": "Melanoma",            "probability": 87.34},
+            {"class": "mel", "disease": "Melanoma",             "probability": 87.34},
             {"class": "bcc", "disease": "Carcinoma Basocelular","probability": 8.21},
             {"class": "akiec","disease": "Queratosis Actínica", "probability": 3.10}
         ],
@@ -77,11 +97,11 @@ async def predict(file: UploadFile = File(...)):
     }
     """
     # Validar tipo de archivo
-    allowed = {'image/jpeg', 'image/jpg', 'image/png', 'image/webp'}
+    allowed = {"image/jpeg", "image/jpg", "image/png", "image/webp"}
     if file.content_type not in allowed:
         raise HTTPException(
             status_code=400,
-            detail=f"Formato no soportado: {file.content_type}. Usa jpg, png o webp."
+            detail=f"Formato no soportado: {file.content_type}. Usa jpg, png o webp.",
         )
 
     # Leer y predecir
@@ -107,5 +127,5 @@ def get_classes():
     return {
         "classes": predictor.classes,
         "class_names": predictor.names,
-        "risk_levels": predictor.risk
+        "risk_levels": predictor.risk,
     }
